@@ -19,7 +19,7 @@ export default function OurRoomPage() {
       <PageIntro label="OUR ROOM / 005" title="欢迎回到我们的小屋" description="银行打烊以后，这里还收藏着两个人一起经营的日子。" />
       <section className="room-hero">
         <div className="room-photo"><CharacterIcon character="bear" size={92} /><span>♡</span><CharacterIcon character="pig" size={92} /><small>K + P</small></div>
-        <div className="room-copy"><span>OUR LITTLE SECRET BASE</span><h2>小熊猪银行营业中</h2><p>一间由小熊和小猪共同经营的可爱银行，认真记录幸福的点点滴滴。</p><dl><div><dt>成立日期</dt><dd>2025.05.20</dd></div><div><dt>经营天数</dt><dd>421 天</dd></div><div><dt>固定汇率</dt><dd>1 熊币 = 5 猪币</dd></div><div><dt>银行成员</dt><dd>小熊 &amp; 小猪</dd></div></dl></div>
+        <div className="room-copy"><span>OUR LITTLE SECRET BASE</span><h2>小熊猪银行营业中</h2><p>小熊和小猪共同经营的可爱银行。小猪把对小熊的在意藏进每天温柔的小细节里，两个人也认真收藏彼此的付出。</p><dl><div><dt>成立日期</dt><dd>2025.05.20</dd></div><div><dt>经营天数</dt><dd>421 天</dd></div><div><dt>固定汇率</dt><dd>1 熊币 = 5 猪币</dd></div><div><dt>银行成员</dt><dd>小熊 &amp; 小猪</dd></div></dl></div>
         <StampDecoration />
       </section>
 
@@ -43,7 +43,7 @@ export default function OurRoomPage() {
       <div className="room-lower-grid">
         <Panel title="六月小报告" eyebrow="MONTHLY REPORT" className="monthly-report">
           <div className="report-month"><span>2026</span><strong>06</strong><small>JUNE</small></div>
-          <div className="report-stats"><div><span>交易总数</span><strong>18</strong><small>笔</small></div><div><span>获得熊币</span><strong>24</strong><small>枚</small></div><div><span>获得猪币</span><strong>95</strong><small>枚</small></div><div><span>完成奖励</span><strong>6</strong><small>份</small></div></div>
+          <div className="report-stats"><div><span>交易总数</span><strong>18</strong><small>笔</small></div><div><span>小熊获得熊币</span><strong>24</strong><small>枚</small></div><div><span>小猪获得猪币</span><strong>95</strong><small>枚</small></div><div><span>完成奖励</span><strong>6</strong><small>份</small></div></div>
           <div className="report-highlight"><span>本月关键词</span><strong>「认真陪伴」</strong><p>最受欢迎奖励：陪散步半小时</p></div>
         </Panel>
         <Panel title="银行营业守则" eyebrow="HOUSE RULES" className="rules-panel">

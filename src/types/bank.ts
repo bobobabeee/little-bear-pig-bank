@@ -19,11 +19,14 @@ export interface DemoReward {
   id: string
   title: string
   icon: string
-  category: '小小奖励' | '陪伴服务' | '特别权限' | '约会体验' | '长期愿望'
+  category: '日常小券' | '用心奖励' | '礼物与旅行'
   description: string
-  provider: string
-  bearPrice: number
-  pigPrice: number
+  provider: '小熊' | '小猪'
+  audience: '小熊' | '小猪'
+  currency: CurrencyCode
+  price: number
   limit: string
-  appointment: string
+  fulfillment: string
+  requiresApproval: boolean
+  protectionNote?: string
 }

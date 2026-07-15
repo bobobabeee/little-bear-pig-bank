@@ -5,7 +5,7 @@ export function DesktopNavigation() {
   return (
     <nav className="desktop-navigation" aria-label="主导航">
       {navItems.map((item) => (
-        <NavLink key={item.to} to={item.to} end={item.to === '/'}>
+        <NavLink key={item.to} to={item.to} end={item.to === '/bank'}>
           <span>{item.en}</span>
           <small>{item.zh}</small>
         </NavLink>
@@ -18,7 +18,7 @@ export function MobileNavigation() {
   return (
     <nav className="mobile-navigation" aria-label="手机主导航">
       {navItems.map((item) => (
-        <NavLink key={item.to} to={item.to} end={item.to === '/'}>
+        <NavLink key={item.to} to={item.to} end={item.to === '/bank'}>
           <span aria-hidden="true">{item.icon}</span>
           <small>{item.short}</small>
         </NavLink>

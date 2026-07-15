@@ -11,22 +11,25 @@ export const transactions: DemoTransaction[] = [
 ]
 
 export const rewards: DemoReward[] = [
-  { id: 'R01', title: '十分钟认真抱抱', icon: '♡', category: '小小奖励', description: '放下手机，安安静静地抱一会儿。', provider: '对方', bearPrice: 1, pigPrice: 5, limit: '每周 2 次', appointment: '无需预约' },
-  { id: 'R02', title: '今日夸夸券', icon: '✦', category: '小小奖励', description: '收获一段具体又认真的今日夸奖。', provider: '对方', bearPrice: 1, pigPrice: 5, limit: '每日 1 次', appointment: '即刻履约' },
-  { id: 'R03', title: '今日选歌权', icon: '♪', category: '小小奖励', description: '接下来的一小时由你来当 DJ。', provider: '对方', bearPrice: 1, pigPrice: 5, limit: '每日 1 次', appointment: '即刻履约' },
-  { id: 'R04', title: '陪散步半小时', icon: '☘', category: '陪伴服务', description: '沿着熟悉的小路，慢慢聊一聊今天。', provider: '对方', bearPrice: 3, pigPrice: 15, limit: '每周 2 次', appointment: '提前 1 天' },
-  { id: 'R05', title: '肩颈放松十五分钟', icon: '♨', category: '陪伴服务', description: '一张适合辛苦工作日的温柔按摩券。', provider: '对方', bearPrice: 4, pigPrice: 20, limit: '每周 1 次', appointment: '当天预约' },
-  { id: 'R06', title: '陪伴完成学习任务', icon: '✎', category: '陪伴服务', description: '一起专注，完成一项拖延很久的计划。', provider: '对方', bearPrice: 5, pigPrice: 25, limit: '每周 2 次', appointment: '提前 1 天' },
-  { id: 'R07', title: '今晚电影选择权', icon: '▣', category: '特别权限', description: '今晚的片单和零食搭配都听你的。', provider: '小熊', bearPrice: 3, pigPrice: 15, limit: '每周 1 次', appointment: '当天预约' },
-  { id: 'R08', title: '下一次餐厅选择权', icon: '♧', category: '特别权限', description: '从街角小店到心愿餐厅，由你决定。', provider: '小猪', bearPrice: 5, pigPrice: 25, limit: '每月 2 次', appointment: '提前 2 天' },
-  { id: 'R09', title: '约会主题决定权', icon: '⌑', category: '特别权限', description: '散步、展览或居家野餐，主题由你定。', provider: '对方', bearPrice: 8, pigPrice: 40, limit: '每月 1 次', appointment: '提前 3 天' },
-  { id: 'R10', title: '不看手机的认真约会', icon: '♥', category: '约会体验', description: '留出完整的两个小时，只关注彼此。', provider: '共同提供', bearPrice: 10, pigPrice: 50, limit: '每月 2 次', appointment: '提前 3 天' },
-  { id: 'R11', title: '对方策划一次小约会', icon: '✿', category: '约会体验', description: '目的地先保密，带着期待准时出发。', provider: '对方', bearPrice: 15, pigPrice: 75, limit: '每月 1 次', appointment: '提前 7 天' },
-  { id: 'R12', title: '周末短途旅行', icon: '〒', category: '长期愿望', description: '为两个人积攒一场慢悠悠的小旅行。', provider: '共同计划', bearPrice: 50, pigPrice: 250, limit: '长期目标', appointment: '共同商量' },
+  { id: 'R01', title: '十分钟认真抱抱', icon: '♡', category: '日常小券', description: '小猪放下手机，给小熊一个安安静静的拥抱。', provider: '小猪', audience: '小熊', currency: 'BEAR', price: 1, limit: '每周 2 次', fulfillment: '无需预约', requiresApproval: false },
+  { id: 'R02', title: '今日选歌权', icon: '♪', category: '日常小券', description: '接下来的一小时，小猪陪小熊听她选的歌。', provider: '小猪', audience: '小熊', currency: 'BEAR', price: 1, limit: '每日 1 次', fulfillment: '即刻使用', requiresApproval: false },
+  { id: 'R03', title: '肩颈放松券', icon: '♨', category: '用心奖励', description: '小猪为辛苦一天的小熊准备十五分钟轻松时间。', provider: '小猪', audience: '小熊', currency: 'BEAR', price: 5, limit: '每周 1 次', fulfillment: '当天商量', requiresApproval: false },
+  { id: 'R04', title: '秘密约会策划', icon: '✿', category: '用心奖励', description: '目的地先保密，小熊只要带着期待准时出发。', provider: '小猪', audience: '小熊', currency: 'BEAR', price: 15, limit: '每月 1 次', fulfillment: '提前 7 天', requiresApproval: false },
+  { id: 'R05', title: '小礼物愿望卡（50元内）', icon: '▧', category: '礼物与旅行', description: '提出一份金额上限明确的小礼物愿望。', provider: '小猪', audience: '小熊', currency: 'BEAR', price: 20, limit: '每月 1 次', fulfillment: '确认预算后购买', requiresApproval: true, protectionNote: '兑换后由小猪确认预算和购买时间。' },
+  { id: 'R06', title: '中礼物愿望卡（200元内）', icon: '◇', category: '礼物与旅行', description: '提出一份中等礼物愿望，同一时间只保留一张待兑现。', provider: '小猪', audience: '小熊', currency: 'BEAR', price: 80, limit: '同时 1 张', fulfillment: '确认预算和时间', requiresApproval: true, protectionNote: '超出金额上限的部分需要另行商量。' },
+  { id: 'R07', title: '大礼物愿望卡（500元内）', icon: '✦', category: '礼物与旅行', description: '为长期积累准备的大礼物愿望额度。', provider: '小猪', audience: '小熊', currency: 'BEAR', price: 220, limit: '半年或一年 1 次', fulfillment: '可延期或退款', requiresApproval: true, protectionNote: '需要确认现实预算；延期或退款不视为违约。' },
+  { id: 'R08', title: '旅行提议卡', icon: '〒', category: '礼物与旅行', description: '提出一个旅行愿望，安排一次认真讨论。', provider: '小猪', audience: '小熊', currency: 'BEAR', price: 20, limit: '长期愿望', fulfillment: '启动一次讨论', requiresApproval: true, protectionNote: '不保证立即出发，也不承诺由小猪承担费用。' },
+  { id: 'R09', title: '短途旅行规划卡', icon: '⌑', category: '礼物与旅行', description: '共同商量目的地、日期、预算、交通、住宿和费用分担。', provider: '小猪', audience: '小熊', currency: 'BEAR', price: 80, limit: '长期愿望', fulfillment: '共同制定计划', requiresApproval: true, protectionNote: '只启动规划，不自动生成行程或付款义务。' },
+  { id: 'R10', title: '长途旅行规划卡', icon: '△', category: '礼物与旅行', description: '建立长期旅行目标、时间表和预算方案。', provider: '小猪', audience: '小熊', currency: 'BEAR', price: 200, limit: '长期冷却', fulfillment: '共同制定计划', requiresApproval: true, protectionNote: '规划后仍可因预算、时间或现实条件延期取消。' },
+  { id: 'R11', title: '今日认真夸夸', icon: '✦', category: '日常小券', description: '小熊送给小猪一段具体又认真的今日夸奖。', provider: '小熊', audience: '小猪', currency: 'PIG', price: 5, limit: '每日 1 次', fulfillment: '即刻使用', requiresApproval: false },
+  { id: 'R12', title: '陪散步半小时', icon: '☘', category: '日常小券', description: '小熊陪小猪沿着熟悉的小路，慢慢聊聊今天。', provider: '小熊', audience: '小猪', currency: 'PIG', price: 15, limit: '每周 2 次', fulfillment: '当天商量', requiresApproval: false },
+  { id: 'R13', title: '学习陪伴一小时', icon: '✎', category: '用心奖励', description: '小熊陪小猪一起专注，完成一项拖延很久的计划。', provider: '小熊', audience: '小猪', currency: 'PIG', price: 25, limit: '每周 2 次', fulfillment: '提前 1 天', requiresApproval: false },
+  { id: 'R14', title: '下一次餐厅选择权', icon: '♧', category: '用心奖励', description: '从街角小店到心愿餐厅，这一次由小猪决定。', provider: '小熊', audience: '小猪', currency: 'PIG', price: 25, limit: '每月 2 次', fulfillment: '提前 2 天', requiresApproval: false },
+  { id: 'R15', title: '不看手机的认真约会', icon: '♥', category: '用心奖励', description: '小熊为小猪留出完整的两个小时，只关注彼此。', provider: '小熊', audience: '小猪', currency: 'PIG', price: 50, limit: '每月 2 次', fulfillment: '提前 3 天', requiresApproval: false },
 ]
 
 export const navItems = [
-  { to: '/', en: 'BANK HOME', zh: '银行首页', short: '首页', icon: '⌂' },
+  { to: '/bank', en: 'BANK HOME', zh: '银行首页', short: '首页', icon: '⌂' },
   { to: '/earn', en: 'EARN COINS', zh: '赚币记录', short: '赚币', icon: '＋' },
   { to: '/rewards', en: 'REWARD SHOP', zh: '奖励商店', short: '奖励', icon: '◇' },
   { to: '/transactions', en: 'TRANSACTIONS', zh: '流水账本', short: '流水', icon: '▤' },

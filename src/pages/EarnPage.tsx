@@ -8,9 +8,10 @@ const categories = ['主动关心', '认真倾听', '提供帮助', '制造惊�
 
 export default function EarnPage({ currentUser }: { currentUser: UserId }) {
   const [submitted, setSubmitted] = useState(false)
-  const [currency, setCurrency] = useState<'BEAR' | 'PIG'>('PIG')
-  const starter = currentUser === 'bear' ? '小熊' : '小猪'
-  const receiver = currentUser === 'bear' ? '小猪' : '小熊'
+  const [receiver, setReceiver] = useState<UserId>(currentUser === 'bear' ? 'pig' : 'bear')
+  const recorderName = currentUser === 'bear' ? '小熊' : '小猪'
+  const currency = receiver === 'bear' ? 'BEAR' : 'PIG'
+  const receiverName = receiver === 'bear' ? '小熊' : '小猪'
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -25,22 +26,23 @@ export default function EarnPage({ currentUser }: { currentUser: UserId }) {
       <Panel title="奖励记录单" eyebrow="A LITTLE THING WORTH SAVING" className="form-panel">
         <form className="earn-form" onSubmit={handleSubmit}>
           <fieldset>
-            <legend><span>01</span> 谁为谁记录</legend>
+            <legend><span>01</span> 记录谁的这份心意</legend>
             <div className="form-grid two-columns">
-              <label><span>发起人 <em>*</em></span><select defaultValue={starter}><option>小熊</option><option>小猪</option></select><small>当前视觉身份已自动带入</small></label>
-              <label><span>获得奖励的人 <em>*</em></span><select defaultValue={receiver}><option>小熊</option><option>小猪</option></select><small>演示阶段不做身份联动校验</small></label>
+              <label><span>记录人 <em>*</em></span><select value={recorderName} disabled><option>小熊</option><option>小猪</option></select><small>当前视觉身份：{recorderName}</small></label>
+              <label><span>获得奖励的人 <em>*</em></span><select value={receiver} onChange={(event) => setReceiver(event.target.value as UserId)}><option value="bear">小熊（赚熊币）</option><option value="pig">小猪（赚猪币）</option></select><small>币种跟随获得者固定，不是由记录人发行。</small></label>
             </div>
           </fieldset>
 
           <fieldset>
-            <legend><span>02</span> 奖励多少小硬币</legend>
-            <div className="coin-choice" role="radiogroup" aria-label="币种">
-              <button type="button" className={currency === 'BEAR' ? 'active' : ''} onClick={() => setCurrency('BEAR')}><CoinIcon currency="BEAR" /><span><strong>熊币</strong><small>BEAR COIN</small></span></button>
-              <button type="button" className={currency === 'PIG' ? 'active' : ''} onClick={() => setCurrency('PIG')}><CoinIcon currency="PIG" /><span><strong>猪币</strong><small>PIG COIN</small></span></button>
+            <legend><span>02</span> 奖励多少专属硬币</legend>
+            <div className={`assigned-currency ${currency === 'BEAR' ? 'bear' : 'pig'}`}>
+              <CoinIcon currency={currency} />
+              <span><small>AUTOMATIC CURRENCY</small><strong>{receiverName}只赚取并使用{currency === 'BEAR' ? '熊币' : '猪币'}</strong></span>
+              <em>币种由获得奖励的人自动确定</em>
             </div>
             <input type="hidden" name="currency" value={currency} />
             <div className="form-grid two-columns">
-              <label><span>数量 <em>*</em></span><div className="input-with-unit"><input name="amount" type="number" min="1" step="1" defaultValue="5" required /><b>{currency === 'BEAR' ? '熊币' : '猪币'}</b></div><small>请输入大于 0 的整数</small></label>
+              <label><span>数量 <em>*</em></span><div className="input-with-unit"><input key={currency} name="amount" type="number" min="1" step="1" defaultValue={currency === 'BEAR' ? 3 : 15} required /><b>{currency === 'BEAR' ? '熊币' : '猪币'}</b></div><small>1熊币 = 5猪币，仅作为价值校准，不可自由兑换。</small></label>
               <label><span>行为分类 <em>*</em></span><select name="category" defaultValue="主动关心">{categories.map((category) => <option key={category}>{category}</option>)}</select><small>选择最接近的一项</small></label>
             </div>
           </fieldset>
@@ -56,14 +58,14 @@ export default function EarnPage({ currentUser }: { currentUser: UserId }) {
           </fieldset>
 
           <div className="confirmation-choice">
-            <label><input type="checkbox" defaultChecked /><span><strong>需要对方确认后入账</strong><small>确认前，这笔奖励暂时不会影响余额。</small></span></label>
+            <label><input type="checkbox" /><span><strong>这笔记录需要对方确认</strong><small>一般记录可直接提交；重要记录勾选后由对方在首页处理。</small></span></label>
             <div className="photo-placeholder"><span>▧</span><p><strong>纪念照片占位</strong><small>照片上传将在后续版本开放</small></p></div>
           </div>
 
           <div className="form-actions"><p>提交即表示：这是一份真诚的正向记录 ♡</p><button className="primary-button" type="submit">盖章并提交 <span>→</span></button></div>
         </form>
       </Panel>
-      {submitted && <div className="toast-message" role="status"><span>✓</span><div><strong>演示记录已提交！</strong><p>本轮不会保存或改变余额。</p></div><button onClick={() => setSubmitted(false)} aria-label="关闭提示">×</button></div>}
+      {submitted && <div className="toast-message" role="status"><span>✓</span><div><strong>演示记录已提交！</strong><p>需要确认的记录会出现在首页“待处理”；本轮不会保存。</p></div><button onClick={() => setSubmitted(false)} aria-label="关闭提示">×</button></div>}
     </div>
   )
 }

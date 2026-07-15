@@ -16,6 +16,8 @@ export function CharacterIcon({ character, size = 72 }: CharacterIconProps) {
         <path d="M40 53 Q44 49 48 53 Q44 58 40 53Z" fill="#6f5142" />
         <path d="M44 56v4m0 0q-5 5-9 0m9 0q5 5 9 0" fill="none" stroke="#6f5142" strokeWidth="2" strokeLinecap="round" />
         <path d="M20 69 Q44 78 68 69" fill="none" stroke="#f7e5a7" strokeWidth="5" strokeLinecap="round" />
+        <path d="M58 13c-6-7-11-2-8 5 2 4 7 4 10 1m2-1c4-6 10-4 9 3-1 5-7 6-11 2" fill="#f6cbd4" stroke="#8c5f5e" strokeWidth="1.4" />
+        <circle cx="60" cy="20" r="3.2" fill="#fde8ed" stroke="#8c5f5e" strokeWidth="1.2" />
       </svg>
     )
   }
@@ -29,7 +31,8 @@ export function CharacterIcon({ character, size = 72 }: CharacterIconProps) {
       <ellipse cx="44" cy="55" rx="14" ry="10" fill="#f9aeba" stroke="#8c5f5e" strokeWidth="1.5" />
       <ellipse cx="39" cy="55" rx="2" ry="3" fill="#8c5f5e" />
       <ellipse cx="49" cy="55" rx="2" ry="3" fill="#8c5f5e" />
-      <path d="M59 18l6-8 4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6z" fill="#cfe5ef" stroke="#6f7480" strokeWidth="1.2" />
+      <path d="M29 72l13 5-8 8-8-9zm30 0-13 5 8 8 8-9z" fill="#cfe5ef" stroke="#6f7480" strokeWidth="1.2" />
+      <circle cx="44" cy="77" r="5" fill="#edf7fa" stroke="#6f7480" strokeWidth="1.2" />
     </svg>
   )
 }

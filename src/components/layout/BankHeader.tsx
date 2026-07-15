@@ -1,22 +1,23 @@
 import { CharacterIcon, CoinIcon } from '../common/OriginalIcons'
 import { DesktopNavigation } from './Navigation'
 import type { UserId } from '../../types/bank'
+import { Link } from 'react-router-dom'
 
 export function BankHeader({ currentUser, onSwitch }: { currentUser: UserId; onSwitch: (user: UserId) => void }) {
   return (
     <>
       <div className="utility-strip">
         <span>EST. 2025.05.20</span>
-        <span>今日营业中 <i aria-hidden="true">●</i></span>
+        <span>今日营业中 <i aria-hidden="true">●</i> · <Link to="/">返回银行门口</Link></span>
         <span>认真保存每一份爱 ♡</span>
       </div>
       <header className="bank-header">
         <div className="header-character header-bear"><CharacterIcon character="bear" size={58} /></div>
-        <div className="brand-lockup">
+        <Link className="brand-lockup" to="/" aria-label="返回小熊猪银行门口">
           <span className="brand-kicker">WELCOME TO OUR LITTLE BANK</span>
           <div className="brand-line"><span>✦</span><h1>小熊猪银行</h1><span>✦</span></div>
           <p>KUMA <span>&amp;</span> PIGGY BANK</p>
-        </div>
+        </Link>
         <div className="header-character header-pig"><CharacterIcon character="pig" size={58} /></div>
         <div className="rate-ticket">
           <CoinIcon currency="BEAR" size={27} />
