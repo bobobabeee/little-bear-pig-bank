@@ -8,11 +8,40 @@ export interface DemoTransaction {
   time: string
   title: string
   detail: string
-  user: string
+  actorId: UserId
+  accountOwnerId: UserId
+  counterpartyId?: UserId
+  relatedOrderId?: string
   currency: CurrencyCode
   amount: number
   status: '已入账' | '待确认' | '已完成' | '已退款'
   kind: TransactionKind
+}
+
+export type StickerStyle = 'pink' | 'blue' | 'green' | 'yellow' | 'caramel'
+
+export interface DiaryNote {
+  id: string
+  authorId: UserId
+  date: string
+  title: string
+  content: string
+  mood: string
+  stickerStyle: StickerStyle
+  tags: string[]
+  relatedTransactionId?: string
+}
+
+export type RedemptionStatus = '预约中' | '待兑现' | '已完成' | '已退款'
+
+export interface DemoRedemption {
+  id: string
+  userId: UserId
+  rewardTitle: string
+  status: RedemptionStatus
+  date: string
+  currency: CurrencyCode
+  amount: number
 }
 
 export interface DemoReward {

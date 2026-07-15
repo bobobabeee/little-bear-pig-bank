@@ -1,13 +1,33 @@
-import type { DemoReward, DemoTransaction } from '../types/bank'
+import type { DemoRedemption, DemoReward, DemoTransaction, DiaryNote } from '../types/bank'
 
 export const transactions: DemoTransaction[] = [
-  { id: 'TX-0714', date: '07.14', time: '21:08', title: '认真听完今日烦恼', detail: '主动关心 · 行为奖励', user: '小猪', currency: 'PIG', amount: 10, status: '已入账', kind: 'income' },
-  { id: 'TX-0713', date: '07.13', time: '19:30', title: '今晚电影选择权', detail: '奖励商店 · 奖励兑换', user: '小熊', currency: 'BEAR', amount: -3, status: '已完成', kind: 'redemption' },
-  { id: 'TX-0712', date: '07.12', time: '08:15', title: '准备了爱心早餐', detail: '制造惊喜 · 行为奖励', user: '小熊', currency: 'BEAR', amount: 4, status: '已入账', kind: 'income' },
-  { id: 'TX-0711', date: '07.11', time: '22:42', title: '陪伴完成学习计划', detail: '陪伴学习 · 行为奖励', user: '小猪', currency: 'PIG', amount: 15, status: '待确认', kind: 'pending' },
-  { id: 'TX-0710', date: '07.10', time: '18:20', title: '抱抱券取消返还', detail: '共同金库 · 兑换退款', user: '小猪', currency: 'PIG', amount: 5, status: '已退款', kind: 'refund' },
-  { id: 'TX-0709', date: '07.09', time: '20:06', title: '一起收拾了小屋', detail: '承担家务 · 双人共同奖励', user: '小熊', currency: 'BEAR', amount: 2, status: '已入账', kind: 'income' },
-  { id: 'TX-0708', date: '07.08', time: '12:10', title: '帮忙拿了一次外卖', detail: '陪伴服务 · 奖励兑换', user: '小猪', currency: 'PIG', amount: -10, status: '已完成', kind: 'expense' },
+  { id: 'TX-0714', date: '07.14', time: '21:08', title: '认真听完今日烦恼', detail: '主动关心 · 行为奖励', actorId: 'bear', accountOwnerId: 'pig', counterpartyId: 'bear', currency: 'PIG', amount: 10, status: '已入账', kind: 'income' },
+  { id: 'TX-0713', date: '07.13', time: '19:30', title: '今晚电影选择权', detail: '奖励商店 · 奖励兑换', actorId: 'bear', accountOwnerId: 'bear', counterpartyId: 'pig', relatedOrderId: 'ORD-0713', currency: 'BEAR', amount: -3, status: '已完成', kind: 'redemption' },
+  { id: 'TX-0712', date: '07.12', time: '08:15', title: '准备了爱心早餐', detail: '制造惊喜 · 行为奖励', actorId: 'pig', accountOwnerId: 'bear', counterpartyId: 'pig', currency: 'BEAR', amount: 2, status: '已入账', kind: 'income' },
+  { id: 'TX-0711', date: '07.11', time: '22:42', title: '陪伴完成学习计划', detail: '申请记录自己的付出', actorId: 'pig', accountOwnerId: 'pig', counterpartyId: 'bear', currency: 'PIG', amount: 15, status: '待确认', kind: 'pending' },
+  { id: 'TX-0710', date: '07.10', time: '18:20', title: '抱抱券取消返还', detail: '奖励兑换 · 退款流水', actorId: 'bear', accountOwnerId: 'pig', counterpartyId: 'bear', relatedOrderId: 'ORD-0710', currency: 'PIG', amount: 5, status: '已退款', kind: 'refund' },
+  { id: 'TX-0709', date: '07.09', time: '20:06', title: '一起收拾了小屋', detail: '承担家务 · 双人共同奖励', actorId: 'pig', accountOwnerId: 'bear', counterpartyId: 'pig', currency: 'BEAR', amount: 2, status: '已入账', kind: 'income' },
+  { id: 'TX-0708', date: '07.08', time: '12:10', title: '帮忙拿了一次外卖', detail: '服务奖励 · 已完成', actorId: 'pig', accountOwnerId: 'pig', counterpartyId: 'bear', relatedOrderId: 'ORD-0708', currency: 'PIG', amount: -10, status: '已完成', kind: 'expense' },
+]
+
+export const diaryNotes: DiaryNote[] = [
+  { id: 'D01', authorId: 'pig', date: '2026.07.14', title: '雨停以后一起走回家', content: '回家的路还有一点湿，小熊认真听我讲完今天的烦恼。路灯一盏一盏亮起来，忽然觉得普通的一天也很值得收藏。', mood: '安心 ♡', stickerStyle: 'blue', tags: ['散步', '被陪伴'], relatedTransactionId: 'TX-0714' },
+  { id: 'D02', authorId: 'bear', date: '2026.07.12', title: '早餐藏着一枚小惊喜', content: '小猪悄悄准备了早餐，还把最好看的那一份放在我面前。今天的熊币记录给这份早起的用心。', mood: '甜甜的 ☀', stickerStyle: 'yellow', tags: ['早餐', '小惊喜'], relatedTransactionId: 'TX-0712' },
+  { id: 'D03', authorId: 'bear', date: '2026.07.06', title: '慢慢看完一部旧电影', content: '没有赶时间，也没有一直看手机。电影结束后我们还聊了很久，最喜欢的居然是同一个小片段。', mood: '温柔 ♪', stickerStyle: 'pink', tags: ['电影夜', '认真约会'] },
+  { id: 'D04', authorId: 'pig', date: '2026.06.28', title: '一起把小屋收拾干净', content: '本来觉得会很累，结果边收拾边聊天，很快就完成了。干净的小屋和并排放好的拖鞋，看起来都特别可爱。', mood: '满足 ✓', stickerStyle: 'green', tags: ['共同完成', '小屋'] },
+  { id: 'D05', authorId: 'pig', date: '2026.06.22', title: '夏天的第一支冰淇淋', content: '我们坐在树荫下面分着吃冰淇淋。小猪记住了小熊最喜欢的口味，也记住了那天风吹过来的方向。', mood: '开心 ✦', stickerStyle: 'caramel', tags: ['夏日', '约会'] },
+  { id: 'D06', authorId: 'bear', date: '2026.06.01', title: '第一张奖励券', content: '第一次兑换的是十分钟认真抱抱。银行的小存折从这一天开始，不只记录硬币，也记录彼此愿意停下来陪伴的时间。', mood: '纪念日 〒', stickerStyle: 'pink', tags: ['第一次', '银行纪念'] },
+]
+
+export const redemptions: DemoRedemption[] = [
+  { id: 'ORD-0715', userId: 'bear', rewardTitle: '肩颈放松券', status: '预约中', date: '07.15', currency: 'BEAR', amount: 5 },
+  { id: 'ORD-0714', userId: 'bear', rewardTitle: '小礼物愿望卡', status: '待兑现', date: '07.14', currency: 'BEAR', amount: 20 },
+  { id: 'ORD-0713', userId: 'bear', rewardTitle: '今晚电影选择权', status: '已完成', date: '07.13', currency: 'BEAR', amount: 3 },
+  { id: 'ORD-0712', userId: 'bear', rewardTitle: '今日选歌权', status: '已退款', date: '07.12', currency: 'BEAR', amount: 1 },
+  { id: 'ORD-0711', userId: 'pig', rewardTitle: '不看手机的认真约会', status: '预约中', date: '07.11', currency: 'PIG', amount: 50 },
+  { id: 'ORD-0709', userId: 'pig', rewardTitle: '今日认真夸夸', status: '已完成', date: '07.09', currency: 'PIG', amount: 5 },
+  { id: 'ORD-0710', userId: 'pig', rewardTitle: '陪散步半小时', status: '已退款', date: '07.10', currency: 'PIG', amount: 15 },
+  { id: 'ORD-0707', userId: 'pig', rewardTitle: '学习陪伴一小时', status: '待兑现', date: '07.07', currency: 'PIG', amount: 25 },
 ]
 
 export const rewards: DemoReward[] = [
@@ -30,7 +50,7 @@ export const rewards: DemoReward[] = [
 
 export const navItems = [
   { to: '/bank', en: 'BANK HOME', zh: '银行首页', short: '首页', icon: '⌂' },
-  { to: '/earn', en: 'EARN COINS', zh: '赚币记录', short: '赚币', icon: '＋' },
+  { to: '/earn', en: 'RECORD A MOMENT', zh: '记一笔心意', short: '记录', icon: '＋' },
   { to: '/rewards', en: 'REWARD SHOP', zh: '奖励商店', short: '奖励', icon: '◇' },
   { to: '/transactions', en: 'TRANSACTIONS', zh: '流水账本', short: '流水', icon: '▤' },
   { to: '/our-room', en: 'OUR ROOM', zh: '我们的小屋', short: '我们', icon: '♡' },

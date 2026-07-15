@@ -47,7 +47,7 @@ export function BankHeader({ currentUser, onSwitch, pendingOpen, onPendingOpen, 
       <DesktopNavigation />
       {pendingOpen && <div className="pending-backdrop" role="presentation" onMouseDown={onPendingClose}>
         <aside className="pending-drawer" role="dialog" aria-modal="true" aria-labelledby="pending-drawer-title" onMouseDown={(event) => event.stopPropagation()}>
-          <div className="pending-drawer-heading"><div><span>ACTION INBOX</span><h2 id="pending-drawer-title">{currentUser === 'bear' ? '小熊' : '小猪'}的待处理</h2></div><button type="button" onClick={onPendingClose} aria-label="关闭待办">×</button></div>
+          <div className="pending-drawer-heading"><div><span>ACTION INBOX</span><h2 id="pending-drawer-title">{currentUser === 'bear' ? '小熊' : '小猪'}的待处理</h2></div><button className="ghost-button" type="button" onClick={onPendingClose} aria-label="关闭待办">×</button></div>
           <PendingPanel currentUser={currentUser} decisions={decisions} onDecision={onDecision} />
         </aside>
       </div>}

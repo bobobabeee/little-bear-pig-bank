@@ -34,7 +34,7 @@ export default function EarnPage({ currentUser }: { currentUser: UserId }) {
 
   return (
     <div className="page-stack earn-page">
-      <PageIntro label="EARN COINS / 002" title="记录一份值得看见的心意" description="由当前操作人给对方记录奖励；自己的付出则送给对方确认。" />
+      <PageIntro label="RECORD A MOMENT / 002" title="记一笔心意" description="由当前操作人给对方记录奖励；自己的付出则送给对方确认。" />
       <Panel title="银行心意凭单" eyebrow="A LITTLE THING WORTH SAVING" className="form-panel bank-voucher">
         <form className="earn-form" onSubmit={handleSubmit}>
           <div className="voucher-mode">
@@ -74,9 +74,11 @@ export default function EarnPage({ currentUser }: { currentUser: UserId }) {
             <label className="full-field"><span>留一句备注</span><textarea name="note" rows={3} placeholder="还有什么想一起记住？（可选）" /></label>
           </section>
 
-          {mode === 'give' ? <label className="confirmation-line"><input type="checkbox" checked={needsConfirmation} onChange={(event) => setNeedsConfirmation(event.target.checked)} /><span><strong>提交后请对方确认</strong><small>一般奖励可直接记录；重要事项可以交给对方确认。</small></span></label> : <div className="confirmation-line locked"><span aria-hidden="true">✓</span><span><strong>必须由对方确认</strong><small>申请人没有批准按钮，避免自己直接给自己发币。</small></span></div>}
+          <div className="voucher-submit-area">
+            {mode === 'give' ? <label className="confirmation-line"><input type="checkbox" checked={needsConfirmation} onChange={(event) => setNeedsConfirmation(event.target.checked)} /><span className="confirmation-check" aria-hidden="true">✓</span><span className="confirmation-copy"><strong>需要对方确认吗？</strong><small>普通心意可以直接记录；重要事项再勾选确认。</small></span></label> : <div className="confirmation-line locked"><span className="confirmation-check" aria-hidden="true">✓</span><span className="confirmation-copy"><strong>这张申请必须由对方确认</strong><small>申请人没有批准按钮，避免自己直接给自己发币。</small></span></div>}
 
-          <div className="form-actions"><p>{mode === 'give' ? `${nameOf(currentUser)}正在给${nameOf(otherUser)}记录一份心意。` : `这份申请将送给${nameOf(otherUser)}。`}</p><button className="primary-button" type="submit" disabled={!amount}>盖章并提交 <span>→</span></button></div>
+            <div className="form-actions"><div className="form-submit-copy"><small>READY TO STAMP</small><p>{mode === 'give' ? `${nameOf(currentUser)}给${nameOf(otherUser)}的这份心意，确认无误后就可以盖章。` : `这份申请会送到${nameOf(otherUser)}的待办里。`}</p></div><button className="primary-button voucher-submit-button" type="submit" disabled={!amount}>{amount ? '盖章并提交' : '请先选择数量'} <span>→</span></button></div>
+          </div>
         </form>
       </Panel>
       {submitted && <div className="toast-message" role="status"><span>✓</span><div><strong>{mode === 'give' ? '演示记录已提交！' : '演示申请已送出！'}</strong><p>{mode === 'self-request' || needsConfirmation ? `将由${nameOf(otherUser)}在顶部待办中确认；` : '这笔奖励将直接记录；'}本轮不会保存或改变余额。</p></div><button onClick={() => setSubmitted(false)} aria-label="关闭提示">×</button></div>}

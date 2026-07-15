@@ -27,11 +27,11 @@ export default function TransactionsPage() {
         <div className="ledger-heading"><div><span>PASSBOOK NO. 2026-07</span><h2>小熊猪银行流水簿</h2><p>共 {shown.length} 笔演示记录</p></div><div className="filter-tabs ledger-filters" aria-label="流水类型">{filters.map((item) => <button key={item.value} className={filter === item.value ? 'active' : ''} onClick={() => setFilter(item.value)}>{item.label}</button>)}</div></div>
         <div className="table-scroll">
           <table className="transaction-table">
-            <thead><tr><th>日期 / TIME</th><th>交易内容 / DESCRIPTION</th><th>用户</th><th>币种</th><th>金额</th><th>状态</th></tr></thead>
+            <thead><tr><th>日期 / TIME</th><th>交易内容 / DESCRIPTION</th><th>账户</th><th>币种</th><th>金额</th><th>状态</th></tr></thead>
             <tbody>{shown.map((item) => <tr key={item.id}>
               <td><strong>{item.date}</strong><small>{item.time}</small></td>
               <td><strong>{item.title}</strong><small>{item.detail}</small><em>{item.id}</em></td>
-              <td>{item.user}</td>
+              <td><strong>{item.accountOwnerId === 'bear' ? '小熊账户' : '小猪账户'}</strong><small>{item.actorId === 'bear' ? '小熊记录' : '小猪记录'}</small></td>
               <td><CoinIcon currency={item.currency} size={25} /><span>{item.currency === 'BEAR' ? '熊币' : '猪币'}</span></td>
               <td className={item.amount > 0 ? 'positive' : 'negative'}>{item.amount > 0 ? '+' : ''}{item.amount}</td>
               <td><span className={`status status-${item.status}`}>{item.status}</span></td>

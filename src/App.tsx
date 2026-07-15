@@ -27,7 +27,7 @@ export default function App() {
         <Route path="/earn" element={<EarnPage currentUser={currentUser} />} />
         <Route path="/rewards" element={<RewardsPage currentUser={currentUser} />} />
         <Route path="/transactions" element={<TransactionsPage />} />
-        <Route path="/our-room" element={<OurRoomPage />} />
+        <Route path="/our-room" element={<OurRoomPage currentUser={currentUser} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </SiteLayout>
