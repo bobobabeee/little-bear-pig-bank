@@ -31,6 +31,12 @@ export default function WelcomePage() {
           <div className="bank-upper-window left"><span className="window-curtain" /><span className="window-curtain" /><b className="window-detail">✿</b></div>
           <div className="bank-upper-window right"><span className="window-curtain" /><span className="window-curtain" /><b className="window-detail">♡</b></div>
 
+          <div className="welcome-couple">
+            <div className="welcome-character"><CharacterIcon character="bear" size={62} /><small>小熊</small></div>
+            <span className="pig-letter" title="小猪留给小熊的一封小信">♡</span>
+            <div className="welcome-character"><CharacterIcon character="pig" size={62} /><small>小猪</small></div>
+          </div>
+
           <div className="bank-awning" aria-hidden="true">
             {Array.from({ length: 11 }, (_, index) => <span key={index} />)}
           </div>
@@ -60,12 +66,6 @@ export default function WelcomePage() {
 
         <div className="welcome-planter left"><span className="flower">✿</span><span className="flower">✿</span><span className="flower">✿</span><span className="pot" /></div>
         <div className="welcome-planter right"><span className="flower">✿</span><span className="flower">✿</span><span className="flower">✿</span><span className="pot" /></div>
-
-        <div className="welcome-couple">
-          <div className="welcome-character"><CharacterIcon character="bear" size={88} /><small>小熊</small></div>
-          <span className="pig-letter" title="小猪留给小熊的一封小信">♡</span>
-          <div className="welcome-character"><CharacterIcon character="pig" size={88} /><small>小猪</small></div>
-        </div>
 
         <div className="bank-path" aria-hidden="true" />
       </section>

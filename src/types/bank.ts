@@ -19,7 +19,7 @@ export interface DemoReward {
   id: string
   title: string
   icon: string
-  category: '日常小券' | '用心奖励' | '礼物与旅行'
+  category: '日常奖励' | '服务奖励' | '礼物奖励' | '旅行奖励'
   description: string
   provider: '小熊' | '小猪'
   audience: '小熊' | '小猪'
